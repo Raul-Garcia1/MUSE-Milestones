@@ -66,7 +66,7 @@ for i in range (1,n):
     y_Euler=U_Cranck[0:4,i-1]+delta_T*F(U_Cranck[2:4,i-1],U_Cranck[0:2,i-1]) #Euler scheme--> U_n+1 = U_n + delta_T * F(dr_n,r_n)
     y_Cranck[0:4,0]=U_Cranck[0:4,i-1]+delta_T/2*(F(U_Cranck[2:4,i-1],U_Cranck[0:2,i-1])+F(y_Euler[2:4],y_Euler[0:2])) #Cranck-Nicolson scheme--> U_n+1 = U_n + delta_T/2 * (F(dr_n,r_n) + F(dr_n+1,r_n+1)) with Euler first
     Error_Cranck=y_Cranck[0:4,0]-y_Euler # Calculates the first error Cranck - Euler
-
+    y_Cranck[0:4,1]=y_Cranck[0:4,0]
     while max(abs(Error_Cranck))>1e-6:
         y_Cranck[0:4,1]=U_Cranck[0:4,i-1]+delta_T/2*(F(U_Cranck[2:4,i-1],U_Cranck[0:2,i-1])+F(y_Cranck[2:4,0],y_Cranck[0:2,0])) #Iterate in the same way but using Cranck-Nicolson solution instead of the Euler one until the solution converges
         Error_Cranck=y_Cranck[0:4,1]-y_Cranck[0:4,0]
@@ -152,4 +152,5 @@ ax.set_ylabel('Y')
 ax.set_zlabel('t')
 ax.set_title('Kepler orbit trajectory with time')
 ax.legend()
+
 plt.show()
