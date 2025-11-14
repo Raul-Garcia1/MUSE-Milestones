@@ -1,6 +1,6 @@
 """
 Ampliación de Matemáticas - Master Universitario en Sistemas Espaciales - ETSIAE
-Milestone 2 : Error estimation of numerical solutions.
+Milestone 3 : Error estimation of numerical solutions.
  1. Write a function to evaluate errors of numerical integration by means of
  Richardson extrapolation. This function should be based on the Cauchy
  problem solution implemented in milestone 2.
@@ -277,4 +277,5 @@ plt.title(f'Error with Richardson Extrapolation in dy/dt (with $\\Delta t$ = {de
 plt.grid(True) 
 plt.legend()  
 plt.show() 
+
 
